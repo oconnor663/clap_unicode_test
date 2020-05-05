@@ -1,0 +1,24 @@
+name: tests
+
+on: push
+
+env:
+  RUST_BACKTRACE: "1"
+
+jobs:
+  cargo_test:
+    name: ${{ matrix.os }} ${{ matrix.channel }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "macOS-latest", "windows-latest"]
+        channel: [stable, beta, nightly]
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: "stable"
+        profile: minimal
+    - run: cargo test

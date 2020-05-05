@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/oconnor663/clap_unicode_test/workflows/tests/badge.svg)](https://github.com/oconnor663/clap_unicode_test/actions)
+
 `cargo test` in this repo passes on Linux but fails on Unix. In both
 cases, the test is construcing a command line arg (`OsString`) that
 contains invalid Unicode and passing it to a Clap binary. Something
